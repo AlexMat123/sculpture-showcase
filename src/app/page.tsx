@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/mongodb";
 import Sculpture from "@/models/Sculpture";
+import Link from "next/link";
 
 export default async function HomePage() {
   await connectDB();
@@ -13,17 +14,19 @@ export default async function HomePage() {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {sculptures.map((sculpture: any) => (
-            <div key={sculpture._id.toString()} className="border rounded-lg overflow-hidden">
-              <img
-                src={sculpture.images[0]}
-                alt={sculpture.title}
-                className="w-full h-64 object-cover"
-              />
-              <div className="p-4">
-                <h2 className="text-xl font-semibold">{sculpture.title}</h2>
-                <p className="text-gray-600">{sculpture.description}</p>
+            <Link key={sculpture._id.toString()} href={`/sculpture/${sculpture._id}`}>
+              <div className="border rounded-lg overflow-hidden hover:shadow-lg transition">
+                <img
+                  src={sculpture.images[0]}
+                  alt={sculpture.title}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-4">
+                  <h2 className="text-xl font-semibold">{sculpture.title}</h2>
+                  <p className="text-gray-600">{sculpture.description}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       )}
