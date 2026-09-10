@@ -1,11 +1,11 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-line mt-24">
-      <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted">
+    <footer className="mt-24 border-t border-line">
+      <div className="page-shell flex flex-col gap-5 py-8 text-xs tracking-[0.04em] text-muted sm:flex-row sm:items-center sm:justify-between">
         <p>Your Name · Based in Your City</p>
-        <div className="flex gap-4">
-          <a href="mailto:you@example.com" className="hover:text-ink transition-colors">Email</a>
-          <a href="https://instagram.com/yourhandle" className="hover:text-ink transition-colors">Instagram</a>
+        <div className="flex gap-5">
+          <a href="mailto:you@example.com" className="transition-colors hover:text-ink">Email</a>
+          <a href="https://instagram.com/yourhandle" className="transition-colors hover:text-ink">Instagram</a>
         </div>
         <p>© {new Date().getFullYear()}</p>
       </div>

@@ -1,24 +1,3 @@
 export default function AboutPage() {
-  return (
-    <main className="max-w-3xl mx-auto px-6 py-20">
-      <h1 className="font-display text-3xl text-ink mb-8">About</h1>
-      <div className="grid sm:grid-cols-[200px_1fr] gap-10">
-        <img
-          src="/your-portrait.jpg"
-          alt="Portrait of the artist"
-          className="w-full aspect-square object-cover"
-        />
-        <div className="space-y-4 text-ink leading-relaxed">
-          <p>
-            Write a couple of paragraphs here about who you are, how you started working with
-            clay, and what draws you to the material. Visitors want to hear it in your own voice.
-          </p>
-          <p>
-            A second paragraph on your process, or the themes and forms you keep returning to,
-            gives helpful context to the pieces in your gallery.
-          </p>
-        </div>
-      </div>
-    </main>
-  );
+  return <main className="page-shell py-16 sm:py-24"><div className="grid gap-12 md:grid-cols-[0.7fr_1.3fr] md:gap-20"><div><p className="eyebrow mb-6">The person behind the pieces</p><h1 className="max-w-sm font-display text-5xl leading-[1.02] tracking-[-0.04em] sm:text-6xl">Making room for the unexpected.</h1></div><div className="grid gap-10 sm:grid-cols-[minmax(160px,0.6fr)_1fr] sm:items-start sm:gap-12"><img src="/your-portrait.jpg" alt="Portrait of the artist" className="aspect-[4/5] w-full object-cover bg-surface" /><div className="flex flex-col gap-6 text-ink leading-relaxed"><p>Write a couple of paragraphs here about who you are, how you started working with clay, and what draws you to the material. Visitors want to hear it in your own voice.</p><p>A second paragraph on your process, or the themes and forms you keep returning to, gives helpful context to the pieces in your gallery.</p><p className="border-t border-line pt-5 text-sm text-muted">Working in clay · Based in Your City</p></div></div></div></main>;
 }

@@ -1,12 +1,3 @@
 export default function ContactPage() {
-  return (
-    <main className="max-w-xl mx-auto px-6 py-24 text-center">
-      <h1 className="font-display text-3xl text-ink mb-6">Get in Touch</h1>
-      <p className="text-muted mb-8">For commissions, exhibitions, or just to say hello.</p>
-      <div className="flex justify-center gap-6 text-ink">
-        <a href="mailto:you@example.com" className="hover:text-accent transition-colors">Email</a>
-        <a href="https://instagram.com/yourhandle" className="hover:text-accent transition-colors">Instagram</a>
-      </div>
-    </main>
-  );
+  return <main className="page-shell flex min-h-[65vh] flex-col justify-center py-20"><div className="max-w-3xl"><p className="eyebrow mb-7">Open studio</p><h1 className="max-w-2xl font-display text-5xl leading-[1.02] tracking-[-0.04em] sm:text-7xl">Let&apos;s make something with a little weight to it.</h1><p className="mt-8 max-w-md text-lg leading-relaxed text-muted">For commissions, exhibitions, or just to say hello. I&apos;d love to hear what you&apos;re working on.</p><div className="mt-12 flex flex-wrap gap-x-8 gap-y-4 border-t border-line pt-5 text-sm"><a href="mailto:you@example.com" className="text-ink underline decoration-line transition-colors hover:text-accent">you@example.com ↗</a><a href="https://instagram.com/yourhandle" className="text-ink underline decoration-line transition-colors hover:text-accent">Instagram ↗</a></div></div></main>;
 }
