@@ -3,8 +3,17 @@ import Sculpture from "@/models/Sculpture";
 import Link from "next/link";
 
 export default async function HomePage() {
-  await connectDB();
-  const sculptures = await Sculpture.find().sort({ createdAt: -1 }).lean();
+  let sculptures: any[] = [];
+
+  if (process.env.MONGODB_URI) {
+    try {
+      await connectDB();
+      sculptures = await Sculpture.find().sort({ createdAt: -1 }).lean();
+    } catch (error) {
+      console.error("[v0] Unable to load sculptures:", error);
+    }
+  }
+
   const featured = sculptures[0];
   const rest = sculptures.slice(1);
 
