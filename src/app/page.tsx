@@ -5,31 +5,52 @@ import Link from "next/link";
 export default async function HomePage() {
   await connectDB();
   const sculptures = await Sculpture.find().sort({ createdAt: -1 }).lean();
+  const featured = sculptures[0];
+  const rest = sculptures.slice(1);
+
+  if (!featured) {
+    return (
+      <main className="max-w-5xl mx-auto px-6 py-24 text-center text-muted">
+        No sculptures yet — check back soon.
+      </main>
+    );
+  }
 
   return (
-    <main className="p-8">
-      <h1 className="text-3xl font-bold mb-6">My Sculptures</h1>
-      {sculptures.length === 0 ? (
-        <p>No sculptures yet — check back soon!</p>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {sculptures.map((sculpture: any) => (
-            <Link key={sculpture._id.toString()} href={`/sculpture/${sculpture._id}`}>
-              <div className="border rounded-lg overflow-hidden hover:shadow-lg transition">
-                <img
-                  src={sculpture.images[0]}
-                  alt={sculpture.title}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-4">
-                  <h2 className="text-xl font-semibold">{sculpture.title}</h2>
-                  <p className="text-gray-600">{sculpture.description}</p>
-                </div>
-              </div>
-            </Link>
-          ))}
+    <main>
+      <section className="relative h-[80vh] w-full overflow-hidden">
+        <img
+          src={featured.images[0]}
+          alt={featured.title}
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute bottom-6 left-6 bg-background/85 px-4 py-2">
+          <p className="font-display text-lg text-ink">{featured.title}</p>
         </div>
-      )}
+      </section>
+
+      <section className="max-w-5xl mx-auto px-6 py-16">
+        <h1 className="font-display text-2xl text-ink mb-10">Selected Work</h1>
+
+        {rest.length === 0 ? (
+          <p className="text-muted">More work coming soon.</p>
+        ) : (
+          <div className="columns-1 sm:columns-2 md:columns-3 gap-6">
+            {rest.map((sculpture: any) => (
+              <Link
+                key={sculpture._id.toString()}
+                href={`/sculpture/${sculpture._id}`}
+                className="group mb-6 block break-inside-avoid"
+              >
+                <img src={sculpture.images[0]} alt={sculpture.title} className="w-full" />
+                <p className="mt-2 text-sm text-muted group-hover:text-ink transition-colors">
+                  {sculpture.title}
+                </p>
+              </Link>
+            ))}
+          </div>
+        )}
+      </section>
     </main>
   );
 }
