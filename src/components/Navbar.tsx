@@ -4,6 +4,7 @@ const links = [
   { href: "/", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+  { href: "/admin/add", label: "Studio" },
 ];
 
 export default function Navbar() {
